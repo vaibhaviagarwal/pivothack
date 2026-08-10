@@ -1,28 +1,50 @@
 import { useRef } from 'react'
 import { useScrubReveal, useSectionExit } from '../hooks/useReveal.js'
+import OrnateFrame from './OrnateFrame.jsx'
+import vaibhaviImg from '../assets/img/team/vaibhavi.jpg'
 
 const team = [
-  { id: 1, name: 'TBD', role: 'TBD', initials: 'TBD' },
-  { id: 2, name: 'TBD', role: 'TBD', initials: 'TBD' },
-  { id: 3, name: 'TBD', role: 'TBD', initials: 'TBD' },
-  { id: 4, name: 'TBD', role: 'TBD', initials: 'TBD' },
-  { id: 5, name: 'TBD', role: 'TBD', initials: 'TBD' },
+  {
+    id: 1,
+    name: 'Vaibhavi Agarwal',
+    role: 'Honours Math Student',
+    photo: vaibhaviImg,
+  },
+  { id: 2, name: 'TBD', role: 'TBD' },
+  { id: 3, name: 'TBD', role: 'TBD' },
+  { id: 4, name: 'TBD', role: 'TBD' },
+  { id: 5, name: 'TBD', role: 'TBD' },
 ]
 
-/** Diamond frame — a rotated double rule, echoing the cave's crystals. */
-function DiamondFrame({ person }) {
+function PortraitFrame({ person }) {
   return (
-    <div data-reveal className="group flex w-36 flex-col items-center text-center sm:w-40">
-      <div className="relative h-24 w-24">
-        <div className="absolute inset-0 rotate-45 rounded-[6px] border border-gold/50 bg-[rgba(42,26,58,0.7)] shadow-panel backdrop-blur-md transition-colors duration-300 group-hover:border-gold/85" />
-        <div className="absolute inset-[9px] rotate-45 rounded-[4px] border border-gold/25" />
-        <span className="absolute inset-0 flex items-center justify-center font-display text-lg font-medium text-gold-soft">
-          {person.initials}
-        </span>
+    <div data-reveal className="group flex w-44 flex-col items-center text-center sm:w-48">
+      <div className="relative aspect-[200/260] w-full">
+        {/* Portrait plate, inset so the filigree sits proud of the image */}
+        <div className="absolute inset-[7%] overflow-hidden rounded-[2px] bg-[rgba(42,26,58,0.75)]">
+          {person.photo ? (
+            <img
+              src={person.photo}
+              alt={person.name}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              <span className="font-display text-2xl font-normal text-gold-soft/50">?</span>
+            </div>
+          )}
+          {/* Keeps the portrait sitting in the same world as the cave behind it */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-midnight-deep/55 via-transparent to-transparent" />
+        </div>
+
+        <OrnateFrame className="transition-opacity duration-300 group-hover:opacity-100 opacity-90" />
       </div>
 
-      <h3 className="mt-6 font-display text-base font-normal text-cream">{person.name}</h3>
-      <p className="micro-label mt-1.5">{person.role}</p>
+      <h3 className="mt-5 font-display text-base font-normal leading-tight text-cream">
+        {person.name}
+      </h3>
+      <p className="micro-label mt-1.5 leading-relaxed">{person.role}</p>
     </div>
   )
 }
@@ -39,14 +61,14 @@ export default function Team() {
       className="relative z-10 flex min-h-screen w-full items-center justify-center px-6 py-32"
     >
       <div data-veil className="w-full max-w-6xl">
-        <div data-reveal className="mb-16 text-center">
+        <div data-reveal className="mb-14 text-center">
           <h2 className="section-heading">Team</h2>
           <p className="eyebrow">Coming Soon</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-12">
           {team.map((person) => (
-            <DiamondFrame key={person.id} person={person} />
+            <PortraitFrame key={person.id} person={person} />
           ))}
         </div>
       </div>

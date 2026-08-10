@@ -3,6 +3,7 @@ import { useActiveSection } from './hooks/useActiveSection.js'
 import SceneStage from './components/SceneStage.jsx'
 import Nav from './components/Nav.jsx'
 import Petals from './components/Petals.jsx'
+import AmbientAudio from './components/AmbientAudio.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Schedule from './components/Schedule.jsx'
@@ -22,6 +23,7 @@ export default function App() {
       <SceneStage />
       <Petals />
       <Nav activeId={activeId} />
+      <AmbientAudio activeId={activeId} />
       <main className="relative z-10">
         <Hero />
         <About />

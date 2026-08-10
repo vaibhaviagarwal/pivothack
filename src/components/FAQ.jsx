@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { useScrubReveal, useSectionExit } from '../hooks/useReveal.js'
+import { playChime } from '../lib/chime.js'
 
 // Placeholders. Swap `q` for the real question and fill `a` when the copy lands.
 const faqs = [
@@ -15,7 +16,12 @@ export default function FAQ() {
   useScrubReveal(rootRef, '[data-reveal]', { start: 'top 82%', end: 'center 55%', stagger: 0.1 })
   useSectionExit(rootRef)
 
-  const toggle = (i) => setOpenIndex((prev) => (prev === i ? -1 : i))
+  const toggle = (i) =>
+    setOpenIndex((prev) => {
+      const next = prev === i ? -1 : i
+      if (next !== -1) playChime()
+      return next
+    })
 
   return (
     <section
