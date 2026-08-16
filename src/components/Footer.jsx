@@ -25,11 +25,11 @@ function MailIcon() {
   )
 }
 
+// TODO: point these at the real accounts once they exist. A dead "#" href
+// is worse than no link at all, so nothing renders until there's a real URL.
 const socials = [
   { label: 'GitHub', href: 'https://github.com', Icon: GithubIcon },
   { label: 'Twitter', href: 'https://twitter.com', Icon: TwitterIcon },
-  // TODO: replace with the real contact address once it exists
-  { label: 'Email', href: '#', Icon: MailIcon },
 ]
 
 export default function Footer() {
@@ -44,24 +44,23 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative z-10 w-full bg-midnight-deep px-6 pb-12 pt-32">
-      <div className="pointer-events-none absolute inset-x-0 -top-32 h-32 bg-gradient-to-b from-transparent to-midnight-deep" />
+    <footer className="relative z-10 w-full bg-midnight-soft px-6 pb-12 pt-32">
+      <div className="pointer-events-none absolute inset-x-0 -top-32 h-32 bg-gradient-to-b from-transparent to-midnight-soft" />
 
       <div className="relative z-20 mx-auto w-full max-w-5xl">
-        <div className="h-px w-full bg-white/10" />
+        <div className="h-px w-full bg-lavender-light/15" />
 
         <div className="mt-12 flex flex-col gap-12 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-xs">
-            <h2 className="font-display text-2xl font-normal tracking-widest3 text-cream">PIVOT</h2>
-            <p className="mt-4 font-sans text-xs font-light leading-relaxed text-cream/45">
-              A 12-hour adaptive hackathon where every team is forced to rethink their solution.
+            <h2 className="font-display text-2xl font-normal text-cream">PIVOT</h2>
+            <p className="mt-4 font-sans text-sm font-light leading-relaxed text-cream/45">
+              A 12-hour hackathon where the challenge changes as you build.
             </p>
           </div>
 
           <div>
-            <p className="micro-label">Contact</p>
-            <p className="mt-4 font-sans text-sm font-light text-cream/70">TBD</p>
-            <p className="mt-1 font-sans text-sm font-light text-cream/70">Waterloo, ON</p>
+            <p className="supporting-text">Location</p>
+            <p className="mt-2 font-sans text-sm font-light text-cream/70">Waterloo, ON</p>
           </div>
 
           <div className="flex items-start gap-6">
@@ -83,7 +82,7 @@ export default function Footer() {
             <button
               onClick={backToTop}
               aria-label="Back to top"
-              className="group flex h-14 w-14 flex-col items-center justify-center rounded-xl border border-white/10 bg-[rgba(42,26,58,0.6)] text-cream/70 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:text-gold-soft"
+              className="group flex h-14 w-14 flex-col items-center justify-center rounded-xl border border-gold/20 bg-[rgba(48,26,58,0.6)] text-cream/70 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:text-gold-soft"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
@@ -94,14 +93,12 @@ export default function Footer() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="mt-1 font-sans text-[8px] uppercase tracking-widest2">Top</span>
+              <span className="mt-1 font-sans text-[11px]">Top</span>
             </button>
           </div>
         </div>
 
-        <p className="mt-16 text-center font-sans text-[10px] uppercase tracking-widest2 text-cream/25">
-          &copy; 2026 PIVOT
-        </p>
+        <p className="mt-16 text-center font-sans text-xs text-cream/30">&copy; 2026 PIVOT</p>
       </div>
     </footer>
   )

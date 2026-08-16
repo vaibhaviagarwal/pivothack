@@ -13,13 +13,13 @@
 }
 
 html {
-  background: #0a0414;
+  background: #1c0f2e;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #0a0414;
+  background: #1c0f2e;
   color: #f4eefb;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 300;
@@ -29,6 +29,13 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* The nav is fixed and sits on top of content, so a plain anchor jump lands
+   a section's heading right underneath it. This reserves that space for
+   both the native scrollIntoView fallback and as a general safety net. */
+section[id] {
+  scroll-margin-top: 96px;
 }
 
 ::selection {
@@ -42,44 +49,108 @@ h1, h2, h3, h4 {
 }
 
 @layer components {
-  /* Section title — light serif, wide tracking, sits ABOVE the eyebrow */
+  /* Shared page-width container — every section's content lives inside this. */
+  .content-container {
+    @apply mx-auto w-full max-w-[1140px] px-6 sm:px-8 lg:px-10;
+  }
+
+  /* One section heading style, used everywhere: quiet serif, left-aligned by
+     default, no glow, restrained tracking. Sections that want it centered
+     (just the hero) opt in with text-center at the call site. */
   .section-heading {
-    @apply font-display text-4xl font-normal tracking-widest2 text-cream sm:text-5xl md:text-6xl;
-    text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+    @apply font-display text-[2.5rem] font-normal leading-[1.1] tracking-tight text-cream sm:text-[3rem] md:text-[3.25rem];
   }
 
-  /* Gold micro-label that sits BELOW the heading in the reference */
-  .eyebrow {
-    @apply mt-4 font-sans text-[10px] font-medium uppercase tracking-widest3 text-gold-dim sm:text-[11px];
+  /* Standard body copy. */
+  .body-text {
+    @apply font-sans text-base font-light leading-relaxed text-cream/70 sm:text-[17px];
   }
 
-  /* Small gold label used inside cards */
-  .micro-label {
-    @apply font-sans text-[9px] font-medium uppercase tracking-widest2 text-gold-dim sm:text-[10px];
+  /* Supporting/meta text — role lines, dates, small print. Normal case, no
+     heavy tracking: readable first, decorative second. */
+  .supporting-text {
+    @apply font-sans text-sm font-light text-cream/55;
   }
 
-  /* Dark translucent card — the reference's card treatment */
+  /* The one restrained surface style, used only where text genuinely needs
+     separation from a busy illustration: warm translucent plum, not black. */
   .panel-card {
-    @apply relative rounded-2xl border border-white/10 bg-[rgba(42,26,58,0.72)] shadow-panel backdrop-blur-md;
+    @apply relative rounded-xl border border-lavender-light/20 bg-[rgba(50,28,58,0.78)];
   }
 
-  .panel-card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-[rgba(52,33,70,0.8)];
+  /* A small storybook sign/notice — compact, hugs its content, for the
+     still-TBD Schedule and Sponsors sections. Warm plum, amber edge. */
+  .sign-card {
+    @apply inline-block w-fit rounded-lg border border-gold/25 bg-[rgba(54,30,58,0.8)] px-6 py-5 shadow-[0_14px_30px_-16px_rgba(30,12,10,0.6)];
   }
 
-  /* Outlined pill button — dark fill, gold-cream text, wide tracking */
+  /* One profile-card system, shared by Judges and Team — sizing lives on
+     .arch-card itself (fixed px width), this is just a centering wrapper. */
+  .profile-card {
+    @apply flex flex-col items-center text-center;
+  }
+
+  /* Arch card — a small illustrated card with an arched-window portrait and
+     a badge-style LinkedIn pin. Judges and Team share the same card
+     language and the same fixed size; the accent tone is what tells them
+     apart (gold for Judges, warm brass for Team). Fixed pixel widths
+     throughout (not max-width) so every card is identical regardless of
+     its neighbours' text length or its parent's layout. */
+  .arch-card {
+    @apply relative w-[148px] shrink-0 rounded-xl border border-gold/25 bg-panel px-3 pb-4 pt-4 shadow-[0_14px_30px_-18px_rgba(20,8,10,0.6)] sm:w-[160px];
+  }
+  .arch-photo-outer {
+    @apply relative mx-auto w-[124px] rounded-[999px_999px_10px_10px] border border-gold/45 p-[3px] sm:w-[136px];
+  }
+  .arch-photo-inner {
+    @apply aspect-[4/5] w-full overflow-hidden rounded-[999px_999px_7px_7px] border border-lavender-light/15 bg-[rgba(50,28,58,0.5)];
+  }
+  .arch-badge {
+    @apply absolute -bottom-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full border border-gold/50 bg-[rgba(42,26,58,0.92)] text-gold-soft/90 shadow-[0_4px_10px_-4px_rgba(0,0,0,0.6)] transition-colors hover:text-gold-soft;
+  }
+  .frame-nameplate {
+    @apply mt-3 flex w-full min-h-[3.25rem] flex-col items-center justify-center text-center;
+  }
+  .frame-divider {
+    @apply mx-auto h-px w-8 bg-gold/35;
+  }
+
+  /* Small pill banner for a group heading (Co-Founders / Co-Organizers) —
+     reads as a label attached to its row, not a stray line of text
+     floating in the illustration. */
+  .tier-banner {
+    @apply inline-flex items-center rounded-full border border-gold/25 bg-panel px-4 py-1 font-sans text-xs font-medium uppercase tracking-wide text-gold-dim;
+  }
+
+  /* Real buttons only — not used as a decorative wrapper. Warm amber/plum,
+     meant to read as part of the illustrated world rather than a UI chrome
+     element sitting on top of it. */
   .pill-btn {
-    @apply inline-flex items-center justify-center rounded-full border border-white/25 bg-[rgba(26,15,40,0.6)] px-9 py-3.5 font-sans text-[11px] font-medium uppercase tracking-widest3 text-cream backdrop-blur-sm transition-all duration-300 hover:border-gold/60 hover:bg-[rgba(42,26,58,0.8)] hover:text-gold-soft;
+    @apply inline-flex items-center justify-center rounded-full border border-gold/35 bg-[rgba(184,137,43,0.22)] px-8 py-3 font-sans text-sm font-medium text-cream transition-colors duration-200 hover:border-gold/70 hover:bg-gold hover:text-midnight-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60;
   }
 
   .pill-btn-sm {
-    @apply inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-2 font-sans text-[10px] font-medium uppercase tracking-widest2 text-cream/80 transition-all duration-300 hover:border-gold/50 hover:text-gold-soft;
+    @apply inline-flex items-center justify-center rounded-full border border-gold/35 bg-[rgba(184,137,43,0.18)] px-5 py-2 font-sans text-sm font-medium text-cream/90 transition-colors duration-200 hover:border-gold/70 hover:bg-gold hover:text-midnight-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60;
+  }
+
+  /* Nav link — larger click target, restrained active state. */
+  .nav-link {
+    @apply rounded-md px-2 py-2 font-sans text-sm text-cream/70 transition-colors duration-200 hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60;
+  }
+  .nav-link-active {
+    @apply text-gold-soft;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Very subtle warm glow for legibility over bright illustrated skies —
+     not a dramatic drop shadow. */
+  .text-glow-warm {
+    text-shadow: 0 2px 20px rgba(224, 182, 74, 0.28), 0 1px 3px rgba(30, 12, 20, 0.35);
   }
 }
 

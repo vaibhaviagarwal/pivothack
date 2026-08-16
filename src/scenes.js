@@ -36,7 +36,7 @@ export const scenes = [
     webm: heroWebm,
     poster: heroPoster,
     alt: 'A clocktower drifting above moonlit clouds',
-    scrim: 0.4,
+    scrim: 0.2,
   },
   {
     id: 'about',
@@ -44,7 +44,7 @@ export const scenes = [
     type: 'image',
     src: aboutImg,
     alt: 'A glowing golden tree above a rolling lavender meadow',
-    scrim: 0.58,
+    scrim: 0.3,
   },
   {
     id: 'schedule',
@@ -54,7 +54,7 @@ export const scenes = [
     webm: streamWebm,
     poster: streamPoster,
     alt: 'A golden waterfall falling into a lantern-lit plunge pool',
-    scrim: 0.58,
+    scrim: 0.28,
     // The Stream draws a path over the real river, so this scene must not
     // drift — any scale/pan here would slide the water out from under it.
     noDrift: true,
@@ -67,7 +67,7 @@ export const scenes = [
     webm: judgesWebm,
     poster: judgesPoster,
     alt: 'Swans drifting on a golden stream in a lantern-lit forest glade',
-    scrim: 0.55,
+    scrim: 0.28,
   },
   {
     id: 'team',
@@ -77,7 +77,7 @@ export const scenes = [
     webm: caveWebm,
     poster: cavePoster,
     alt: 'A glowing crystal cave with an amber path winding into the distance',
-    scrim: 0.5,
+    scrim: 0.26,
   },
   {
     id: 'sponsors',
@@ -85,7 +85,7 @@ export const scenes = [
     type: 'image',
     src: sponsorsImg,
     alt: 'A night market of wooden stalls strung with glowing paper lanterns',
-    scrim: 0.62,
+    scrim: 0.32,
   },
   {
     id: 'faq',
@@ -95,7 +95,7 @@ export const scenes = [
     webm: faqWebm,
     poster: faqPoster,
     alt: 'A village nestled in a lavender and gold cloudscape at dusk',
-    scrim: 0.6,
+    scrim: 0.3,
   },
 ]
 

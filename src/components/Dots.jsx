@@ -7,7 +7,7 @@ export default function Dots({ activeId }) {
   const handleClick = (e, id) => {
     e.preventDefault()
     if (lenisRef?.current) {
-      lenisRef.current.scrollTo(`#${id}`, { duration: 1.4 })
+      lenisRef.current.scrollTo(`#${id}`, { duration: 1.4, offset: -96 })
     } else {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     }

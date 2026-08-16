@@ -113,7 +113,7 @@ export default function SceneStage() {
           lastVeil[i] = veilOpacity
         }
 
-        if (w > 0 && !scenes[i].noDrift) {
+        if (w > 0 && !scenes[i].noDrift && !reduced) {
           const progress = clamp01((centre - top) / b.height)
           const art = artRefs.current[i]
           if (art) {
@@ -222,13 +222,15 @@ export default function SceneStage() {
         </div>
       ))}
 
-      <div ref={scrimRef} className="absolute inset-0 bg-midnight-deep" style={{ opacity: 0.5 }} />
+      {/* Warm plum scrim, not black — just enough to keep text legible without
+          flattening the illustration into wallpaper. */}
+      <div ref={scrimRef} className="absolute inset-0 bg-[#2a1832]" style={{ opacity: 0.28 }} />
 
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse at center, rgba(10,4,20,0) 30%, rgba(10,4,20,0.6) 100%)',
+            'radial-gradient(ellipse at center, rgba(30,16,36,0) 40%, rgba(30,16,36,0.32) 100%)',
         }}
       />
     </div>
