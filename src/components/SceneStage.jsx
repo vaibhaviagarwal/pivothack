@@ -135,7 +135,18 @@ export default function SceneStage() {
         // Skip DOM writes when nothing meaningfully changed.
         if (Math.abs(opacity - lastOpacity[i]) > 0.002) {
           const layer = layerRefs.current[i]
-          if (layer) layer.style.opacity = opacity.toFixed(4)
+          if (layer) {
+            layer.style.opacity = opacity.toFixed(4)
+            // iOS Safari can put an actively-composited <video> on its own
+            // hardware layer that ignores an ancestor's opacity once it's
+            // been playing — most visible on the Hero video, which is the
+            // only one that autoplays before any scroll happens. A faded
+            // scene stays a visible "ghost" pinned on screen instead of
+            // disappearing. Pulling the layer out of the paint pipeline via
+            // visibility (not just opacity) once it's essentially invisible
+            // works around that — visibility can't be ignored the same way.
+            layer.style.visibility = opacity < 0.01 ? 'hidden' : 'visible'
+          }
           lastOpacity[i] = opacity
         }
 
