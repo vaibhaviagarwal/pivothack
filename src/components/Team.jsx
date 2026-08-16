@@ -2,18 +2,22 @@ import { useRef } from 'react'
 import { useScrubReveal, useSectionExit } from '../hooks/useReveal.js'
 import OrnateFrame from './OrnateFrame.jsx'
 import vaibhaviImg from '../assets/img/team/vaibhavi.jpg'
+import peterImg from '../assets/img/team/peter.jpg'
+import ritaImg from '../assets/img/team/rita.jpg'
+import vibhorImg from '../assets/img/team/vibhor.jpg'
+import vivImg from '../assets/img/team/viv.jpg'
 
 const team = [
   {
     id: 1,
     name: 'Vaibhavi Agarwal',
-    role: 'Honours Math Student',
+    role: 'Co-Founder · Honours Math',
     photo: vaibhaviImg,
   },
-  { id: 2, name: 'TBD', role: 'TBD' },
-  { id: 3, name: 'TBD', role: 'TBD' },
-  { id: 4, name: 'TBD', role: 'TBD' },
-  { id: 5, name: 'TBD', role: 'TBD' },
+  { id: 2, name: 'Rita Bhowmik', role: 'Co-Founder · Nanotechnology Engineering', photo: ritaImg },
+  { id: 3, name: 'Peter Lian', role: 'Co-Organizer · Computer Science', photo: peterImg },
+  { id: 4, name: 'Vibhor Sharma', role: 'Co-Organizer · Management Engineering', photo: vibhorImg },
+  { id: 5, name: 'Vivian Yang', role: 'Co-Organizer · Computer Science', photo: vivImg },
 ]
 
 function PortraitFrame({ person }) {
