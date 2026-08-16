@@ -28,9 +28,9 @@ export default function About() {
           <p className="eyebrow">Why Pivot?</p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3 md:items-stretch">
-          <div data-beat className="panel-card p-7">
-            <h3 className="font-display text-2xl font-normal text-gold-soft">What is PIVOT?</h3>
+        <div className="mx-auto flex max-w-3xl flex-col gap-5">
+          <div data-beat className="panel-card p-8 sm:p-10">
+            <h3 className="font-display text-2xl font-normal text-gold-soft">Why Pivot?</h3>
             <p className="mt-4 font-sans text-sm font-light leading-relaxed text-cream/65">
               PIVOT is a 12-hour adaptive hackathon where the challenge unfolds throughout the day.
               Instead of revealing the entire challenge at the beginning, teams receive new
@@ -38,10 +38,6 @@ export default function About() {
               The first three reveals are shared by every team, while the final reveal&mdash;the
               Pivot&mdash;is unique to each team.
             </p>
-          </div>
-
-          <div data-beat className="panel-card p-7">
-            <h3 className="font-display text-2xl font-normal text-gold-soft">Why We Built It</h3>
             <p className="mt-4 font-sans text-sm font-light leading-relaxed text-cream/65">
               Real product development is iterative. Requirements change, customers change,
               priorities shift, and products evolve. PIVOT recreates that experience by rewarding
@@ -51,11 +47,10 @@ export default function About() {
             </p>
           </div>
 
-          <div data-beat className="panel-card p-7">
-            <h3 className="font-display text-2xl font-normal text-gold-soft">By the Numbers</h3>
-            <div className="mt-5 grid grid-cols-2 gap-6">
+          <div data-beat className="panel-card px-6 py-6 sm:px-10">
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
               {stats.map((stat) => (
-                <div key={stat.label}>
+                <div key={stat.label} className="text-center">
                   <div className="font-display text-3xl font-normal text-cream">{stat.value}</div>
                   <div className="micro-label mt-1">{stat.label}</div>
                 </div>
