@@ -6,9 +6,10 @@ import gsap from 'gsap'
  *
  * Instead of one looping track, this crossfades a small stack of loops so the
  * world actually breathes with the scroll: a dreamy, far-away, radio-toned
- * bed hums throughout, and a second "scene" layer swells in for water at the
- * Stream, forest + birds for Judges/Team, market murmur for Sponsors, and a
- * soft closing gust of wind for the FAQ village at the very end.
+ * bed hums throughout, and a second "scene" layer swells in on top of it for
+ * water at the Stream, forest + birds for Judges/Team, and a soft closing
+ * gust of wind for the FAQ village at the very end. Sponsors deliberately
+ * has no accent layer — just the bed on its own.
  *
  * Every non-bed layer was reprocessed offline to match the bed's tonal
  * character (narrow band, a touch of the same echo, a compressor to tame
@@ -35,7 +36,6 @@ const LAYERS = [
   { id: 'water', src: '/audio/waterfall-soft.mp3', volume: 0.22, sections: ['schedule'] },
   { id: 'night', src: '/audio/soundreality-forest-ambience-540695.mp3', volume: 0.12, sections: ['judges', 'team'] },
   { id: 'birds', src: '/audio/birds-soft.mp3', volume: 0.13, sections: ['judges', 'team'] },
-  { id: 'market', src: '/audio/spinopel-market-background-noise-281247.mp3', volume: 0.1, sections: ['sponsors'] },
   // The original wind-gust bed, repurposed as a soft closing breeze for the
   // last section instead of retired — reprocessed the same way as water/birds.
   { id: 'gust', src: '/audio/wind-soft.mp3', volume: 0.1, sections: ['faq'] },
