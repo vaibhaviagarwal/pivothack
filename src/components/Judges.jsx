@@ -6,19 +6,35 @@ import rajiImg from '../assets/img/judges/raji.jpg'
 import osherImg from '../assets/img/judges/osher.jpg'
 import alanImg from '../assets/img/judges/alan.jpg'
 
-// linkedin: '#' placeholders until the real profile URLs come in — swap
-// them in and the link just starts working, no other code changes needed.
 const judges = [
-  { id: 1, name: 'Simon Ryu', role: 'Cresta', photo: simonImg, linkedin: '#' },
-  { id: 2, name: 'Raji RV', role: 'IBM', photo: rajiImg, linkedin: '#' },
+  {
+    id: 1,
+    name: 'Simon Ryu',
+    role: 'Cresta',
+    photo: simonImg,
+    linkedin: 'https://www.linkedin.com/in/simon-ryu-vancouver/',
+  },
+  {
+    id: 2,
+    name: 'Raji RV',
+    role: 'IBM',
+    photo: rajiImg,
+    linkedin: 'https://www.linkedin.com/in/raji-rv/',
+  },
   {
     id: 3,
     name: 'Osher Ahn Clifford',
     role: 'ex Shopify, Cohere & Wealthsimple',
     photo: osherImg,
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/osherac/',
   },
-  { id: 4, name: 'Alan Zhang', role: 'BuildBane, BMO', photo: alanImg, linkedin: '#' },
+  {
+    id: 4,
+    name: 'Alan Zhang',
+    role: 'BuildBane, BMO',
+    photo: alanImg,
+    linkedin: 'https://www.linkedin.com/in/alan-zhang-7b2662251/',
+  },
 ]
 
 export default function Judges() {

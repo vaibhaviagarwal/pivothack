@@ -8,29 +8,46 @@ import vibhorImg from '../assets/img/team/vibhor.jpg'
 import vivImg from '../assets/img/team/viv.jpg'
 
 // Two tiers, no repeated "Co-Founder ·" / "Co-Organizer ·" prefix on each
-// card — that's now said once via the tier banner instead. linkedin: '#'
-// placeholders until the real profile URLs come in, same pattern as Judges.
+// card — that's now said once via the tier banner instead.
 const founders = [
-  { id: 1, name: 'Vaibhavi Agarwal', role: 'Mathematics', photo: vaibhaviImg, linkedin: '#' },
+  {
+    id: 1,
+    name: 'Vaibhavi Agarwal',
+    role: 'Mathematics',
+    photo: vaibhaviImg,
+    linkedin: 'https://www.linkedin.com/in/vaibhavi-agarwal-28b6481b3/',
+  },
   {
     id: 2,
     name: 'Rita Bhowmik',
     role: 'Nanotechnology Engineering',
     photo: ritaImg,
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/ritabhowmik/',
   },
 ]
 
 const organizers = [
-  { id: 3, name: 'Peter Lian', role: 'Computer Science', photo: peterImg, linkedin: '#' },
+  {
+    id: 3,
+    name: 'Peter Lian',
+    role: 'Computer Science',
+    photo: peterImg,
+    linkedin: 'https://www.linkedin.com/in/yishuolian/',
+  },
   {
     id: 4,
     name: 'Vibhor Sharma',
     role: 'Management Engineering',
     photo: vibhorImg,
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/vibhor-sharma--/',
   },
-  { id: 5, name: 'Vivian Yang', role: 'Computer Science', photo: vivImg, linkedin: '#' },
+  {
+    id: 5,
+    name: 'Vivian Yang',
+    role: 'Computer Science',
+    photo: vivImg,
+    linkedin: 'https://www.linkedin.com/in/vivian-yang-2ab528232/',
+  },
 ]
 
 // Cards are a fixed 148/160px wide (see .arch-card). A max-width here keeps
