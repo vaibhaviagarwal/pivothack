@@ -55,7 +55,12 @@ export default function Nav({ activeId }) {
         ))}
       </nav>
 
-      <a href="#" className="pill-btn-sm hidden sm:inline-flex">
+      <a
+        href="https://wygo.world/pivot"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="pill-btn-sm hidden sm:inline-flex"
+      >
         Apply
       </a>
     </header>

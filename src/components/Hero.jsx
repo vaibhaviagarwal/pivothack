@@ -74,7 +74,13 @@ export default function Hero() {
           A 12-hour adaptive hackathon where every team is forced to rethink their solution.
         </p>
 
-        <a data-hero-item href="#" className="pill-btn mt-10">
+        <a
+          data-hero-item
+          href="https://wygo.world/pivot"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pill-btn mt-10"
+        >
           Apply
         </a>
 
