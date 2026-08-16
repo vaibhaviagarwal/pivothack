@@ -46,6 +46,20 @@ export default function SceneStage() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const els = scenes.map((s) => document.getElementById(s.id))
 
+    // React's `muted` JSX prop sets the attribute, but iOS Safari sometimes
+    // hasn't synced that to the actual `.muted` DOM property by the time we
+    // call .play() below — when that happens Safari treats it as an
+    // unmuted autoplay attempt, blocks it, and shows its native tap-to-play
+    // button over the video. Forcing the properties directly, before any
+    // play() call, is what actually makes muted autoplay reliable.
+    mediaRefs.current.forEach((media) => {
+      if (media && media.tagName === 'VIDEO') {
+        media.muted = true
+        media.defaultMuted = true
+        media.playsInline = true
+      }
+    })
+
     // Document-space bounds, refreshed only when layout can actually change.
     let bounds = []
     let veils = []
@@ -154,6 +168,7 @@ export default function SceneStage() {
         if (media && media.tagName === 'VIDEO') {
           if (opacity > 0.04 && !reduced) {
             if (media.paused) {
+              media.muted = true
               const p = media.play()
               if (p && typeof p.catch === 'function') p.catch(() => {})
             }

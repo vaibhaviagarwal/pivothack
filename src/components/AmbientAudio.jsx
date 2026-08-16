@@ -5,9 +5,15 @@ import gsap from 'gsap'
  * Layered ambient sound.
  *
  * Instead of one looping track, this crossfades a small stack of loops so the
- * world actually breathes with the scroll: a soft wind bed hums throughout,
- * and a second "scene" layer swells in for water at the Stream, night
- * creatures for Judges/Team, and market murmur for Sponsors/Questions.
+ * world actually breathes with the scroll: a dreamy, far-away, radio-toned
+ * bed hums throughout, and a second "scene" layer swells in for water at the
+ * Stream, forest + birds for Judges/Team, market murmur for Sponsors, and a
+ * soft closing gust of wind for the FAQ village at the very end.
+ *
+ * Every non-bed layer was reprocessed offline to match the bed's tonal
+ * character (narrow band, a touch of the same echo, a compressor to tame
+ * transient peaks) so nothing swells in sounding tonally jarring against it
+ * — see git history for the exact ffmpeg chains if these ever need re-tuning.
  *
  * Each layer is its own <audio>, loaded from /public/audio/*.mp3 at runtime
  * (not bundled) so missing files degrade quietly — a layer that 404s just
@@ -22,10 +28,17 @@ const CROSSFADE = 2.2
 
 // id: which section ids swell this layer in. Empty array = always-on bed.
 const LAYERS = [
-  { id: 'wind', src: '/audio/lookingnorth-gusty-wind-473695.mp3', volume: 0.07, sections: [] },
-  { id: 'water', src: '/audio/laura_aglaia-smallwaterfall-218855.mp3', volume: 0.15, sections: ['schedule'] },
+  // Only the first 20s of the original track were needed — trimmed and
+  // self-crossfaded at the seam (tail blended into head) so the loop point
+  // is inaudible instead of clicking every repeat.
+  { id: 'bed', src: '/audio/dreamy-radio-loop20.mp3', volume: 0.16, sections: [] },
+  { id: 'water', src: '/audio/waterfall-soft.mp3', volume: 0.22, sections: ['schedule'] },
   { id: 'night', src: '/audio/soundreality-forest-ambience-540695.mp3', volume: 0.12, sections: ['judges', 'team'] },
-  { id: 'market', src: '/audio/spinopel-market-background-noise-281247.mp3', volume: 0.1, sections: ['sponsors', 'faq'] },
+  { id: 'birds', src: '/audio/birds-soft.mp3', volume: 0.13, sections: ['judges', 'team'] },
+  { id: 'market', src: '/audio/spinopel-market-background-noise-281247.mp3', volume: 0.1, sections: ['sponsors'] },
+  // The original wind-gust bed, repurposed as a soft closing breeze for the
+  // last section instead of retired — reprocessed the same way as water/birds.
+  { id: 'gust', src: '/audio/wind-soft.mp3', volume: 0.1, sections: ['faq'] },
 ]
 
 // Rolls the harsh top end off every layer so the bed reads as a soft murmur
