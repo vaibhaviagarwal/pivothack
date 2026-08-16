@@ -19,11 +19,15 @@ import gsap from 'gsap'
  * Each layer is its own <audio>, loaded from /public/audio/*.mp3 at runtime
  * (not bundled) so missing files degrade quietly — a layer that 404s just
  * never plays, and the whole control hides itself if nothing loaded at all.
- * Nothing plays until the visitor clicks: autoplay-with-sound is blocked by
- * every browser anyway, and it's rude besides.
+ *
+ * Sound always starts off on a fresh page load/refresh and never persists
+ * across visits — browsers block programmatic audio.play() without a user
+ * gesture anyway, so "remembering" an on state from a previous visit just
+ * produced a broken half-state (the button looked on, nothing played, until
+ * you clicked it again). Muted-by-default with an explicit unmute avoids
+ * that entirely and is also just more polite.
  */
 
-const STORAGE_KEY = 'pivot:sound'
 const FADE = 1.6
 const CROSSFADE = 2.2
 
@@ -174,23 +178,9 @@ export default function AmbientAudio({ activeId }) {
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [on])
 
-  // Restore the visitor's last choice once we know a layer actually works.
-  useEffect(() => {
-    if (!checked || readyLayerIds.length === 0) return
-    try {
-      if (localStorage.getItem(STORAGE_KEY) === 'on') setOn(true)
-    } catch {}
-  }, [checked, readyLayerIds])
-
   const toggle = () => {
     if (audioCtxRef.current?.state === 'suspended') audioCtxRef.current.resume()
-    setOn((prev) => {
-      const next = !prev
-      try {
-        localStorage.setItem(STORAGE_KEY, next ? 'on' : 'off')
-      } catch {}
-      return next
-    })
+    setOn((prev) => !prev)
   }
 
   if (checked && readyLayerIds.length === 0) return null
