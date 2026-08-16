@@ -60,7 +60,7 @@ function Tier({ label, people, className = '' }) {
       <div className="flex justify-center">
         <span className="tier-banner">{label}</span>
       </div>
-      <div className="mx-auto mt-5 flex max-w-[640px] flex-wrap justify-center gap-x-12 gap-y-10">
+      <div className="mx-auto mt-5 flex max-w-[640px] flex-wrap justify-center gap-x-4 gap-y-8 sm:gap-x-12 sm:gap-y-10">
         {people.map((person) => (
           <ProfileCard
             key={person.id}
@@ -68,6 +68,7 @@ function Tier({ label, people, className = '' }) {
             role={person.role}
             photo={person.photo}
             linkedin={person.linkedin}
+            imgScale={person.imgScale}
             variant="team"
           />
         ))}

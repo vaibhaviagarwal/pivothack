@@ -1,21 +1,5 @@
 import { useLenis } from '../lib/smoothScroll.jsx'
 
-function GithubIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-    </svg>
-  )
-}
-
-function TwitterIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M22 5.8c-.7.3-1.5.5-2.4.6.9-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1A4.1 4.1 0 0 0 11.7 8c0 .3 0 .6.1.9A11.7 11.7 0 0 1 3.2 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.6 0 11.7-6.3 11.7-11.7v-.6c.8-.6 1.5-1.3 2-2.2Z" />
-    </svg>
-  )
-}
-
 function MailIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -25,11 +9,32 @@ function MailIcon() {
   )
 }
 
-// TODO: point these at the real accounts once they exist. A dead "#" href
-// is worse than no link at all, so nothing renders until there's a real URL.
+function LinkedInIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z" />
+    </svg>
+  )
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" />
+    </svg>
+  )
+}
+
 const socials = [
-  { label: 'GitHub', href: 'https://github.com', Icon: GithubIcon },
-  { label: 'Twitter', href: 'https://twitter.com', Icon: TwitterIcon },
+  { label: 'Email', href: 'mailto:vagarwal2077@gmail.com', Icon: MailIcon },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/pivot-hacks/posts/?feedView=all',
+    Icon: LinkedInIcon,
+  },
+  { label: 'Instagram', href: 'https://www.instagram.com/pivothack/', Icon: InstagramIcon },
 ]
 
 export default function Footer() {
@@ -60,23 +65,32 @@ export default function Footer() {
 
           <div>
             <p className="supporting-text">Location</p>
-            <p className="mt-2 font-sans text-sm font-light text-cream/70">Waterloo, ON</p>
+            <p className="mt-2 max-w-[220px] font-sans text-sm font-light leading-relaxed text-cream/70">
+              Builders Club
+              <br />
+              165 King St W
+              <br />
+              Kitchener, ON N2G 1A7
+            </p>
           </div>
 
           <div className="flex items-start gap-6">
             <div className="flex gap-5 pt-1 text-cream/40">
-              {socials.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-gold-soft"
-                >
-                  <Icon />
-                </a>
-              ))}
+              {socials.map(({ label, href, Icon }) => {
+                const isMailto = href.startsWith('mailto:')
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target={isMailto ? undefined : '_blank'}
+                    rel={isMailto ? undefined : 'noreferrer'}
+                    className="transition-colors hover:text-gold-soft"
+                  >
+                    <Icon />
+                  </a>
+                )
+              })}
             </div>
 
             <button

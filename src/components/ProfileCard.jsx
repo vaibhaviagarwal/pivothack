@@ -15,7 +15,14 @@ function LinkedInIcon() {
   )
 }
 
-export default function ProfileCard({ name, role, photo, linkedin, variant = 'team' }) {
+export default function ProfileCard({
+  name,
+  role,
+  photo,
+  linkedin,
+  variant = 'team',
+  imgScale = 1,
+}) {
   const isJudge = variant === 'judge'
   const accent = isJudge ? 'border-gold/45' : 'border-[#cf9f4a]/55'
 
@@ -30,6 +37,7 @@ export default function ProfileCard({ name, role, photo, linkedin, variant = 'te
                 alt={name}
                 loading="lazy"
                 className="h-full w-full object-cover object-top"
+                style={imgScale !== 1 ? { transform: `scale(${imgScale})` } : undefined}
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-cream/25">
