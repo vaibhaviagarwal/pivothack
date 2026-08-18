@@ -104,7 +104,7 @@ export default function Hero() {
 
         <div data-hero-item className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="/Pivot%20Hack%20Spons%20Package%20(1)%20(1).pdf"
+            href="https://online.flippingbook.com/view/493731837/2/"
             target="_blank"
             rel="noopener noreferrer"
             className="pill-btn-sm"
