@@ -84,6 +84,13 @@ h1, h2, h3, h4 {
     @apply inline-block w-fit rounded-lg border border-gold/25 bg-[rgba(54,30,58,0.8)] px-6 py-5 shadow-[0_14px_30px_-16px_rgba(30,12,10,0.6)];
   }
 
+  /* Sponsor logo tile — a genuinely solid cream plate (not translucent) so a
+     logo's real colors read cleanly regardless of what's behind it. Lives
+     inside .sign-card, not floating loose on the illustration. */
+  .sponsor-plate {
+    @apply flex items-center justify-center rounded-md border border-gold/20 bg-cream px-5 py-3.5;
+  }
+
   /* One profile-card system, shared by Judges and Team — sizing lives on
      .arch-card itself (fixed px width), this is just a centering wrapper. */
   .profile-card {

@@ -101,6 +101,20 @@ export default function Hero() {
         <p data-hero-item className="mt-7 font-sans text-sm text-cream/45">
           Backed by Waterloo Tech Week
         </p>
+
+        <div data-hero-item className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://go.fliplink.me/view/F0921C37-77DA-4319-AE9F-D5E5F2CF1058"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pill-btn-sm"
+          >
+            Sponsorship Package
+          </a>
+          <a href="mailto:vivianyang207@gmail.com" className="pill-btn-sm">
+            Apply to be a Sponsor
+          </a>
+        </div>
       </div>
 
       <div
