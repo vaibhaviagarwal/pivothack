@@ -5,6 +5,7 @@ import simonImg from '../assets/img/judges/simon.jpg'
 import rajiImg from '../assets/img/judges/raji.jpg'
 import osherImg from '../assets/img/judges/osher.jpg'
 import alanImg from '../assets/img/judges/alan.jpg'
+import anirudhImg from '../assets/img/judges/anirudh.png'
 
 const judges = [
   {
@@ -34,6 +35,13 @@ const judges = [
     role: 'BuildBane, BMO',
     photo: alanImg,
     linkedin: 'https://www.linkedin.com/in/alan-zhang-7b2662251/',
+  },
+  {
+    id: 5,
+    name: 'Anirudh Dabas',
+    role: 'Shopify, Waddleloo',
+    photo: anirudhImg,
+    linkedin: 'https://www.linkedin.com/in/anirudhdabas/',
   },
 ]
 
