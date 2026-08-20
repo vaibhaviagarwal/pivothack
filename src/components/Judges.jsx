@@ -58,7 +58,7 @@ export default function Judges() {
 
         <div
           data-reveal
-          className="mx-auto mt-10 flex max-w-[820px] flex-wrap justify-center gap-x-4 gap-y-8 sm:gap-x-12 sm:gap-y-10"
+          className="mx-auto mt-10 flex max-w-[620px] flex-wrap justify-center gap-x-4 gap-y-8 sm:gap-x-12 sm:gap-y-10"
         >
           {judges.map((judge) => (
             <ProfileCard
